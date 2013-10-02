@@ -93,7 +93,6 @@ class Decoder
           puts "СООБЩЕНИЕ: " + msg.inspect
           puts "РЕЗУЛЬТАТ: #{words.join(' ')}"
           puts "*" * 80
-          printf "\n"
           STDIN.getc
         end
 
@@ -103,5 +102,4 @@ class Decoder
   end
 end
 
-decoder = Decoder.new
-decoder.perform
+Decoder.new.perform
