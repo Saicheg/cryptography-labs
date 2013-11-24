@@ -5,7 +5,7 @@ require 'pry'
 
 class Decoder
   def message
-    @message ||= "000 101 101 001 101 010 110 010 011 001 001 000 000 100 001".reverse
+    @message ||= "000 101 101 001 101 010 110 010 011 001 001 000 000 100 000".reverse
   end
 
   def split_message(message, word_length = 5)
