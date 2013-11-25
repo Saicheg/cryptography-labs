@@ -3,6 +3,7 @@ require 'prime'
 class Client
 
   NUMBER_PRIME = 100
+  PRIMES = Prime.each(NUMBER_PRIME).to_a
 
   attr_reader :secret, :coeff
 
@@ -13,7 +14,7 @@ class Client
 
   def count_coefficients
     begin
-      @secret ||= Prime.each(NUMBER_PRIME).to_a.sample
+      @secret ||= PRIMES.sample
       @coeff ||= [*1..@p-1].shuffle.select { |i| ((@secret * i) - 1) % (@p-1) == 0 }.sample
     end while @coeff.nil?
   end

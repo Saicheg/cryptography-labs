@@ -50,11 +50,11 @@ class Spy
   end
 
   def a_raw
-    @a_raw ||= [*1..Client::NUMBER_PRIME].select { |a| @mu3 == (@mu2 ** a ) % @p }
+    @a_raw ||= Client::PRIMES.select { |a| @mu3 == (@mu2 ** a ) % @p }
   end
 
   def b_coefficients_for(beta)
-    [*1..Client::NUMBER_PRIME].select { |b| (b * beta) % (@p-1) == 1}
+    Client::PRIMES.select { |b| (b * beta) % (@p-1) == 1}
   end
 
 
