@@ -3,7 +3,7 @@ require 'rubygems'
 require 'pry'
 require 'colorize'
 
-P=23#997
+P=83#997
 
 a = Client.new(P)
 b = Client.new(P)
@@ -21,7 +21,6 @@ puts "\u03BC2: #{msg.state}"
 mu2 = msg.state
 a.resend_message(msg)
 puts "\u03BC3: #{msg.state}"
-mu3 = msg.state
 b.resend_message(msg)
 puts "\u03BC4: #{msg.state}"
 
@@ -37,7 +36,7 @@ puts "*".cyan * 20
 puts "Counting params".cyan
 puts "*".cyan * 20
 
-spy = Spy.new(P, mu2, mu3)
+spy = Spy.new(P, mu2)
 
 right = {a: a.secret, alpha: a.coeff, b: b.secret, beta: b.coeff, mu: msg.content}
 

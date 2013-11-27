@@ -1,9 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
     coderay (1.0.9)
     colorize (0.6.0)
     ffi (1.9.0-java)
+    i18n (0.6.5)
     method_source (0.8.2)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -23,5 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_support
   colorize
+  i18n
   pry

@@ -3,8 +3,8 @@
 # \mu_3 = \mu_2^a mod p
 
 class Spy
-  def initialize(p, mu2, mu3)
-    @p, @mu2, @mu3 = p, mu2, mu3
+  def initialize(p, mu2)
+    @p, @mu2 = p, mu2
   end
 
   def a_coefficients
@@ -18,25 +18,25 @@ class Spy
   def variants
     variants = []
 
-    [*1...@p].each do |mu|
-      mu1 = (mu ** alpha) % @p
+    [*1...@p-1].each do |beta|
+      [*1...@p-1].each do |mu1|
+        mu2 = (mu1 ** beta) % @p
 
-      [*1...@p].each do |beta|
+        if mu2 == @mu2
+          [*1...@p-1].each do |alpha|
+            b_coefficients_for(beta).each do |b|
+              a_coefficients_for(alpha).each do |a|
 
-        if ((mu1 ** beta) % @p) == @mu2
-          a_coefficients.each do |a|
-            if @mu3 == ( @mu2 ** a) % @p
+                mu3 = ((mu2 ** a) % @p)
+                mu4 = ((mu3 ** b) % @p)
 
-              b_coefficients_for(beta).each do |b|
-                mu4 = (@mu3 ** b) % @p
-
-                variants << {a: a, alpha: alpha, b: b, beta: beta, mu: mu } if mu4 == mu
-
+                if ((mu4 ** alpha) % @p) == mu1 && mu4 == $mu
+                  variants << {a: a, alpha: alpha, b: b, beta: beta, mu: mu4 }
+                end
               end
             end
           end
         end
-
       end
     end
 
@@ -57,6 +57,9 @@ class Spy
     Client::PRIMES.select { |b| (b * beta) % (@p-1) == 1}
   end
 
+  def a_coefficients_for(alpha)
+    Client::PRIMES.select { |a| (a * alpha) % (@p-1) == 1}
+  end
 
 
 end
