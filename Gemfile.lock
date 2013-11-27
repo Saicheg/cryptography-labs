@@ -18,6 +18,7 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
       spoon (~> 0.0)
+    rsa (0.1.4)
     slop (3.4.6)
     spoon (0.0.4)
       ffi
@@ -31,3 +32,4 @@ DEPENDENCIES
   colorize
   i18n
   pry
+  rsa

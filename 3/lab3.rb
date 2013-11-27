@@ -33,7 +33,7 @@ puts 'Alphabet: '.cyan + alph.inspect
 enc = text.split('').map{|char| alph[char]}.join div
 
 File.open('out.txt', 'w') {|f| f << enc }
-binding.pry
+# binding.pry
 
 dec  = enc.split div
 back_alph = Hash[alph.to_a.map(&:reverse)]
